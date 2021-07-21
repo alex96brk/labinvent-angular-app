@@ -215,9 +215,9 @@ public onResetPassword(emailForm: NgForm):void {
   
 }
 
-public onDeleteUser(userId: number):void {
+public onDeleteUser(userName: string):void {
   this.subsctriptions.push(
-    this.userService.deleteUser(userId).subscribe(
+    this.userService.deleteUser(userName).subscribe(
       (response: CustomHttpResponse) => {
         this.sendNotification(NotificationType.SUCCESS, response.message.toLowerCase());
         this.getUsers(true);

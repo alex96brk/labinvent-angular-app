@@ -83,7 +83,7 @@
                                 <button class="btn btn-outline-info" (click)="onEditUser(appUser)">
                                     <i class="fas fa-edit"></i>
                                 </button>
-                                <button class="btn btn-outline-danger" (click)="onDeleteUser(appUser.id)">
+                                <button class="btn btn-outline-danger" (click)="onDeleteUser(appUser.userName)">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </div>
@@ -390,7 +390,7 @@
                                     <span class="input-group-text">Profile Picture</span>
                                 </div>
                                 <div class="custom-file">
-                                    <input type="file" name="profileImage" (change)="onProfileImageChange($event)" class="custom-file-input" >
+                                    <input type="file" name="profileImage" (change)="onProfileImageChange($event)" class="custom-file-input" accept="image/*" >
                                     <label class="custom-file-label">
                                         <span [hidden] = "!fileName">{{ fileName }}</span>
                                         <span [hidden] = "fileName">Choose File</span>
@@ -468,7 +468,7 @@
                                 <span class="input-group-text">Profile Picture</span>
                             </div>
                             <div class="custom-file">
-                                <input type="file" name="profileImage" (change)="onProfileImageChange($event)" class="custom-file-input" >
+                                <input type="file" name="profileImage" (change)="onProfileImageChange($event)" class="custom-file-input" accept="image/*" >
                                 <label class="custom-file-label">
                                     <span [hidden] = "!fileName">{{ fileName }}</span>
                                     <span [hidden] = "fileName">Choose File</span>
@@ -502,7 +502,7 @@
 </div>
 
 <form enctype="multipart/form-data" style="display: none;">
-    <input type="file" (change) = "onUpdateProfileImage($event)" name="profile-image-change" id="profile-image-change" placeholder="file" ngModel accept="*"/>
+    <input type="file" (change) = "onUpdateProfileImage($event)" name="profile-image-change" id="profile-image-change" placeholder="file" ngModel accept="image/*"/>
 </form>
 
 </div>
