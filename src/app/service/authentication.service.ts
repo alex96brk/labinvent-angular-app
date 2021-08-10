@@ -30,6 +30,9 @@ export class AuthenticationService {
     localStorage.removeItem('user');
     localStorage.removeItem('token');
     localStorage.removeItem('users');
+    localStorage.removeItem('sensors');
+    localStorage.removeItem('sensortypes');
+    localStorage.removeItem('sensorunits');
   }
 
   public saveToken(token:string): void {

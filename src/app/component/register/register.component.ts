@@ -2,10 +2,11 @@ import { HttpErrorResponse, HttpHeaderResponse, HttpResponse } from '@angular/co
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { NotificationType } from '../enum/notification-type.enum';
-import { User } from '../model/user';
-import { AuthenticationService } from '../service/authentication.service';
-import { NotificationService } from '../service/notification.service';
+import { NotificationType } from '../../enum/notification-type.enum';
+import { User } from '../../model/user';
+import { AuthenticationService } from '../../service/authentication.service';
+import { NotificationService } from '../../service/notification.service';
+import { SubSink } from 'subsink';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +16,7 @@ import { NotificationService } from '../service/notification.service';
 export class RegisterComponent implements OnInit, OnDestroy {
 
   public showLoading: boolean;
-  private subscriptions: Subscription[] = [];
+  private subs = new SubSink();
 
   constructor(private router: Router, private authenticationService: AuthenticationService,
     private notificationService: NotificationService) { }
@@ -28,7 +29,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   public onRegister(user: User): void {
     this.showLoading = true;
-    this.subscriptions.push(
+    this.subs.add(
       this.authenticationService.register(user).subscribe(
         (response: User) => {
           this.showLoading = false;
@@ -49,7 +50,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscriptions.forEach(sub => sub.unsubscribe());
+    this.subs.unsubscribe();
   }
 
 }

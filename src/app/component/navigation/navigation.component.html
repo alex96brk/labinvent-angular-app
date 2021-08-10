@@ -1,0 +1,47 @@
+    <!--NAVIGATION BAR-->
+    <nav [hidden]="!(isLoggedIn)" class="navbar navbar-expand-sm navbar-expand-md navbar-expand-lg breadcrumb bg-secondary">
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav navbar-left">
+                    <li>
+                        <a class="nav-item nav-link ml-1 text-light" data-toggle="tab" href="#users" (click)="openUsers('Users')">
+                            <i class="fa fa-users"></i>
+                            Users
+                        </a> 
+                    </li>  
+                    <li>
+                        <a class="nav-item nav-link ml-1 text-light"  data-toggle="tab" href="#sensors" (click)="openSensors('Sensors')">
+                            <i class="fas fa-broadcast-tower"></i>
+                            Sensors
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-item nav-link ml-1 text-light" data-toggle="tab" href="#password_settings" (click)="openPasswordSettings('Settings')"> 
+                            <i class="fa fa-cogs"></i>
+                            Settings
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right text-light">
+                    <li>
+                        <a class="nav-item nav-link text-light move-right mr-3" data-toggle="tab" href="#profile" (click)="openUserProfile('Profile')">
+                            Welcome, {{user?.firstName}}
+                            <i class="fa fa-user"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-item nav-link text-light move-right mr-3" data-toggle="tab" href="" (click)="onLogOut()">
+                            Logout
+                            <i class="fas fa-sign-out-alt"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    
+
+    
+

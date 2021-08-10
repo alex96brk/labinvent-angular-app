@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpEvent, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpEvent } from '@angular/common/http';
 import { environment } from '../../environments/environment'
 import { Observable } from 'rxjs';
 import { User } from '../model/user';
 import { CustomHttpResponse } from '../model/custom-http-response';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class UserService {
   private host = environment.apiUrl;
 
@@ -28,8 +28,7 @@ export class UserService {
   }
 
   public updateProfileImage(formData: FormData): Observable<HttpEvent<User>> {
-    return this.http.post<User>(`${this.host}/user/update-profile-image`, formData, 
-    {reportProgress:true, observe: 'events'});
+    return this.http.post<User>(`${this.host}/user/update-profile-image`, formData, {reportProgress:true, observe: 'events'});
   }
 
   public deleteUser(userName: string): Observable<CustomHttpResponse> {
@@ -60,8 +59,5 @@ export class UserService {
     formData.append('isNonLocked', JSON.stringify(user.notLocked));
     return formData;
   }
-
-
-
 
 }

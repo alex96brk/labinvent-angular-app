@@ -1,12 +1,13 @@
-import { HttpErrorResponse, HttpHeaderResponse, HttpResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { HeaderType } from '../enum/header-type.enum';
-import { NotificationType } from '../enum/notification-type.enum';
-import { User } from '../model/user';
-import { AuthenticationService } from '../service/authentication.service';
-import { NotificationService } from '../service/notification.service';
+import { HeaderType } from '../../enum/header-type.enum';
+import { NotificationType } from '../../enum/notification-type.enum';
+import { User } from '../../model/user';
+import { AuthenticationService } from '../../service/authentication.service';
+import { NotificationService } from '../../service/notification.service';
+import { SubSink } from 'subsink';
+
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ import { NotificationService } from '../service/notification.service';
 })
 export class LoginComponent implements OnInit, OnDestroy {
   public showLoading: boolean;
-  private subscriptions: Subscription[] = [];
+  private subs = new SubSink();
 
   constructor(private router: Router, private authenticationService: AuthenticationService,
     private notificationService: NotificationService) { }
@@ -30,7 +31,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   public onLogin(user: User): void {
     this.showLoading = true;
-    this.subscriptions.push(
+    this.subs.add(
       this.authenticationService.login(user).subscribe(
         (response: HttpResponse<User>) => {
           const token = response.headers.get(HeaderType.JWT_TOKEN);
@@ -55,7 +56,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscriptions.forEach(sub => sub.unsubscribe());
+    this.subs.unsubscribe();
   }
 
 }

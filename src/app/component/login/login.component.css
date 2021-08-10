@@ -2,7 +2,7 @@ body, html {
     margin: 0;
     padding: 0;
     height: 100%;
-    background: #60a3bc !important;
+    background: #6c6c6c !important; /*#60a3bc*/
     
 }
 
@@ -11,7 +11,7 @@ body, html {
     width: 600px;
     margin-top: auto;
     margin-bottom: auto;
-    background: #afbfd8;
+    background: #b1b1b1;
     position: relative;
     display: flex;
     justify-content: center;
@@ -30,7 +30,7 @@ body, html {
     width: 170px;
     top: -75px;
     border-radius: 50%;
-    background: #60a3bc;
+    background: #6c6c6c;
     padding: 10px;
     text-align: center;
 }
@@ -49,7 +49,7 @@ body, html {
 
 .login_btn {
     width: 100%;
-    background: #1B4F72 !important;
+    background: #494a4a !important;
     color: white !important;
 }
 
@@ -65,7 +65,7 @@ body, html {
 }
 
 .input-group-text {
-    background: #1B4F72 !important;
+    background: #494a4a !important;
     color: white !important;
     border: 0 !important;
     border-radius: 0.25rem 0 0 0.25rem !important;
@@ -80,5 +80,5 @@ body, html {
 }
 
 .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
-    background-color: #1B4f72 !important;
+    background-color: #494a4a !important;
 }
